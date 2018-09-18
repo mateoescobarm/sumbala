@@ -1,0 +1,37 @@
+{
+  "name": "sumbala",
+  "version": "1.0.0",
+  "description": "B&L automatization",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf reports",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "test": "npm run test:headless",
+    "test:local": "npm run build && protractor dist/protractor/config.js",
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
+    "postinstall": "webdriver-manager update --gecko false",
+    "lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateoescobarm/sumbala.git"
+  },
+  "author": "Mateo Escobar M - mateoescobarm@gmail.com (mateoescobarm)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mateoescobarm/sumbala/issues"
+  },
+  "homepage": "https://github.com/mateoescobarm/sumbala#readme",
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.3",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "jasmine-awesome-report": "0.0.3",
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor": "^5.4.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0"
+  }
+}
