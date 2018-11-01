@@ -25,6 +25,7 @@
   "homepage": "https://github.com/mateoescobarm/sumbala#readme",
   "devDependencies": {
     "@types/jasminewd2": "^2.0.3",
+    "lint": "^1.1.2",
     "typescript": "^3.0.3"
   },
   "dependencies": {

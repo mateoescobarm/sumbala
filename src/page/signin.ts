@@ -14,7 +14,6 @@ export class SignInStepPage {
     await this.userNameField.sendKeys('comercial2.medellin@su.co');
     await this.passwordField.sendKeys('mateo3112');
     await browser.wait(ExpectedConditions.visibilityOf(this.logInButton));
-    // await browser.sleep(3000);
     return this.logInButton.click();
   }
   public async fillForm(): Promise<void> {

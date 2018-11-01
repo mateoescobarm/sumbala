@@ -1,4 +1,4 @@
-import { ElementFinder, $, element, by } from "protractor";
+import { ElementFinder, $, element, by } from 'protractor';
 
 export class MainPage {
   private get plusSign(): ElementFinder {
