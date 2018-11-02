@@ -11,9 +11,11 @@ export class SignInStepPage {
     return $('button');
   }
   private async logInForm() {
+    await browser.wait(ExpectedConditions.visibilityOf(this.userNameField));
+    await browser.wait(ExpectedConditions.visibilityOf(this.passwordField));
+    await browser.wait(ExpectedConditions.presenceOf(this.logInButton));
     await this.userNameField.sendKeys('comercial2.medellin@su.co');
     await this.passwordField.sendKeys('mateo3112');
-    await browser.wait(ExpectedConditions.visibilityOf(this.logInButton));
     return this.logInButton.click();
   }
   public async fillForm(): Promise<void> {

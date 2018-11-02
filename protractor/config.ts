@@ -18,7 +18,7 @@ export const config: Config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['disable-infobars=true --window-size=800,600'],
+      args: ['disable-infobars=true', 'start-maximized'],
       prefs: { credentials_enable_service: false }
     }
   }
