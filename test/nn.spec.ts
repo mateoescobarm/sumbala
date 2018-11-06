@@ -1,6 +1,7 @@
 import { browser } from 'protractor';
 import { SignInStepPage } from '../src/page/signin';
 import { HomePage } from '../src/page/homepage.page';
+import { EstudentsPage } from '../src/page/estudents.page';
 
 describe('going to SU B&L page', () => {
 
@@ -10,7 +11,8 @@ describe('going to SU B&L page', () => {
 
   describe('login in', () => {
     const signIn: SignInStepPage = new SignInStepPage();
-    const newLead: HomePage = new HomePage();
+    const home: HomePage = new HomePage();
+    const estudents: EstudentsPage = new EstudentsPage();
 
     beforeEach(async () => {
       await browser.waitForAngular();
@@ -22,15 +24,25 @@ describe('going to SU B&L page', () => {
         .toBe('Mateo Escobar M');
     });
 
-    describe('checking for new LeadWidgets', () => {
+    describe('going to estudents page', () => {
       beforeEach(async () => {
-        await newLead.goToLeadsPage();
-        // await console.log(newLead.findingSpecificLeads('Lead Widget'));
+        await home.goToLeadsPage();
       });
 
-      it('then lead should be asigned', () => {
-        expect(signIn.getUserName())
-        .toBe('Mateo Escobar');
+      it('then we should have the students page', () => {
+        expect(estudents.pageName.getText())
+          .toBe('Buscar');
+      });
+
+      describe('for each new lead we asign a user', () => {
+        beforeEach(async () => {
+          await estudents.changingAsignee('Lead Widget', 'Mateo Escobar');
+        });
+
+        it(' then ther should not be any Lead Widgets', () => {
+          expect(estudents.findingSpecificLeads('Lead Widget'))
+            .toBe(null);
+        });
       });
     });
   });
